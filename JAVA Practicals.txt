@@ -1,0 +1,534 @@
+2) Stack and Queue in Java
+
+import java.util.Scanner;
+
+class Stack {
+    private int[] stackArray;
+    private int top;
+    private int maxSize;
+
+    public Stack(int size) {
+        maxSize = size;
+        stackArray = new int[maxSize];
+        top = -1;
+    }
+
+    public void push(int value) {
+        if (top == maxSize - 1) {
+            System.out.println("Stack is full. Cannot push element.");
+            return;
+        }
+        stackArray[++top] = value;
+        System.out.println("Pushed " + value + " onto the stack.");
+    }
+
+    public int pop() {
+        if (top == -1) {
+            System.out.println("Stack is empty. Cannot pop element.");
+            return -1;
+        }
+        else
+{
+        int value = stackArray[top--];
+        System.out.println("Popped " + value + " from the stack.");
+        return value;
+       }
+      
+		
+    }
+}
+
+class Queue {
+    private int[] queueArray;
+    private int front;
+    private int rear;
+    private int maxSize;
+
+    public Queue(int size1) {
+        maxSize = size1;
+        queueArray = new int[maxSize];
+        front = 0;
+        rear = -1;
+    }
+
+    public void enqueue(int value) {
+        if (rear == maxSize - 1) {
+            System.out.println("Queue is full. Cannot enqueue element.");
+            return;
+        }
+        queueArray[++rear] = value;
+        System.out.println("Enqueued " + value + " into the queue.");
+    }
+
+    public int dequeue() {
+        if (front > rear) {
+            System.out.println("Queue is empty. Cannot dequeue element.");
+            return -1;
+        }
+        int value = queueArray[front++];
+        System.out.println("Dequeued " + value + " from the queue.");
+        return value;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the size of stack:");
+        int size = scanner.nextInt();
+        System.out.print("Enter the size of queue: ");
+         int size1 = scanner.nextInt();
+        
+
+        Stack stack = new Stack(size);
+        Queue queue = new Queue(size1);
+
+        while (true) {
+            System.out.println("\nSelect an operation:");
+            System.out.println("1. Push to Stack");
+            System.out.println("2. Pop from Stack");
+            System.out.println("3. Enqueue to Queue");
+            System.out.println("4. Dequeue from Queue");
+            System.out.println("5. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter value to push onto the stack: ");
+                    int value = scanner.nextInt();
+                    stack.push(value);
+                    break;
+                case 2:
+                    stack.pop();
+                    break;
+                case 3:
+                    System.out.print("Enter value to enqueue into the queue: ");
+                    value = scanner.nextInt();
+                    queue.enqueue(value);
+                    break;
+                case 4:
+                    queue.dequeue();
+                    break;
+                case 5:
+                    System.out.println("Exiting program...");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+}
+..............................................................................................
+
+3) Multithreading in Java
+
+
+class Mthread extends Thread {
+    public void run()
+    {
+       
+            // Displaying the thread that is running
+
+            System.out.println("Thread " + Thread.currentThread().getId() + " is running");
+        
+        
+    }
+}
+ 
+public class Multithread {
+    public static void main(String[] args)
+    {
+        int n = 8; // Number of threads
+
+        for (int i = 0; i < n; i++) {
+
+           Mthread obj= new Mthread();
+            obj.start();
+        }
+    }
+ ..................................................................................................
+4) Student information in File
+
+import java.io.*;
+import java.util.*;
+
+public class Methods 
+
+{
+	public static void main(String args[]) throws Exception
+	{
+		FileWriter fw= new FileWriter("ABC.txt");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter Student Name");
+		String name=sc.next();
+		System.out.println("Enter Student Marks");
+		int marks=sc.nextInt();
+		System.out.println("Enter Student Class");
+		String std=sc.next();
+		fw.write("Name:"+name);
+		fw.write("\nMarks:"+marks);
+		fw.write("\nClass:"+std);
+		fw.close();
+		
+		int ch,n=0;
+		FileReader fr=new FileReader("ABC.txt");
+		while((ch=fr.read())!=-1)
+		{
+		  System.out.print((char)ch);
+		  n++;
+		}
+
+		System.out.println(n);
+		fr.close();
+	}
+}
+...........................................................................................
+5) Shape motion using Applet
+
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.Graphics;
+
+public class ShapeMotionApplet extends Applet implements Runnable {
+    private int x, y;  // Position of the shape
+    private int dx, dy;  // Velocity of the shape
+
+    public void init() {
+        // Set the initial position and velocity of the shape
+        x = 50;
+        y = 50;
+        dx = 1;
+        dy = 1;
+
+        // Set the background color
+        setBackground(Color.white);
+    }
+
+    public void start() {
+        Thread thread = new Thread(this);
+        thread.start();
+    }
+
+    public void stop() {
+        // Stop the animation thread
+        Thread.currentThread().interrupt();
+    }
+
+    public void run() {
+        while (true) {
+            // Update the position of the shape
+            x += dx;
+            y += dy;
+
+            // Check if the shape has reached the boundaries of the applet
+            if (x <= 0 || x >= getWidth() - 50) {
+                dx = -dx;  // Reverse the velocity in the x-direction
+            }
+            if (y <= 0 || y >= getHeight() - 50) {
+                dy = -dy;  // Reverse the velocity in the y-direction
+            }
+
+            // Repaint the applet to display the updated position of the shape
+            repaint();
+
+            // Delay for a short period to control the animation speed
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void paint(Graphics g) {
+        // Clear the applet
+        super.paint(g);
+
+        // Draw the shape at its current position
+        g.setColor(Color.red);
+        g.fillOval(x, y, 50, 50);
+    }
+}
+//HTML File
+<html>
+    <head>
+        <title>Shape Motion Applet</title>
+    </head>
+    <body>
+        <applet code="ShapeMotionApplet.class" width="400" height="300"></applet>
+    </body>
+</html>
+..........................................................................................
+6) Design registration form using Applet and AWT components
+ 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RegistrationForm extends Frame implements ActionListener {
+    private TextField nameField, emailField, passwordField;
+    private Button submitButton;
+
+    public RegistrationForm() {
+        // Set frame properties
+        setTitle("Registration Form");
+        setSize(400, 300);
+        setLayout(null);
+        setBackground(Color.white);
+
+        // Create labels for name, email, and password
+        Label nameLabel = new Label("Name:");
+        Label emailLabel = new Label("Email:");
+        Label passwordLabel = new Label("Password:");
+
+        // Create text fields for name, email, and password
+        nameField = new TextField();
+        emailField = new TextField();
+        passwordField = new TextField();
+        passwordField.setEchoChar('*');
+
+        // Create a submit button
+        submitButton = new Button("Submit");
+        submitButton.addActionListener(this);
+
+        // Set component bounds
+        nameLabel.setBounds(50, 50, 100, 30);
+        emailLabel.setBounds(50, 100, 100, 30);
+        passwordLabel.setBounds(50, 150, 100, 30);
+        nameField.setBounds(150, 50, 200, 30);
+        emailField.setBounds(150, 100, 200, 30);
+        passwordField.setBounds(150, 150, 200, 30);
+        submitButton.setBounds(150, 200, 100, 30);
+
+        // Set fonts for labels and button
+        Font labelFont = new Font("Arial", Font.BOLD, 14);
+        nameLabel.setFont(labelFont);
+        emailLabel.setFont(labelFont);
+        passwordLabel.setFont(labelFont);
+        submitButton.setFont(labelFont);
+
+        // Add components to the frame
+        add(nameLabel);
+        add(emailLabel);
+        add(passwordLabel);
+        add(nameField);
+        add(emailField);
+        add(passwordField);
+        add(submitButton);
+
+        // Set frame visible
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == submitButton) {
+            String name = nameField.getText();
+            String email = emailField.getText();
+            String password = passwordField.getText();
+
+            // Perform validation and registration logic here
+            // For simplicity, let's just display the entered data
+            System.out.println("Name: " + name);
+            System.out.println("Email: " + email);
+            System.out.println("Password: " + password);
+        }
+    }
+
+    public static void main(String[] args) {
+        new RegistrationForm();
+    }
+}
+..............................................................................................
+7) write a program to connect any Database and execute Query
+
+import java.sql.*;  
+class Oraclecon{  
+public static void main(String args[]){  
+try{  
+//Load the Driver Class
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+//Create the connection object
+Connection con=DriverManager.getConnection(""jdbc:oracle:thin:@localhost:1521:xe","SYSTEM","admin");  
+System.out.println("Connection successfully Established!!\n");
+//Create the statement object
+Statement stmt=con.createStatement();  
+//execute the query
+ResultSet rs=stmt.executeQuery("select * from student"); 
+ 
+while(rs.next())  
+System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getInt(4)+"  "+rs.getString(5));  
+//close the connection object
+con.close();  
+}catch(Exception e){ System.out.println(e);}  
+}  
+}
+........................................................................................................
+9) wap to demonstrate socket programming send Hello world to server
+//Client
+ import java.io.*;
+ import java.net.*; 
+public class MyClient { 
+public static void main(String[] args) {
+
+ try{ Socket s=new Socket("127.0.0.1", 4000);
+ DataOutputStream dout=new DataOutputStream(s.getOutputStream());
+ dout.writeUTF("Hello Server"); 
+dout.flush(); 
+dout.close(); 
+s.close(); 
+
+}catch(Exception e) {
+
+System.out.println(e);
+
+        }
+   }
+
+}
+//Server
+import java.io.*; 
+import java.net.*; 
+public class MyServer { 
+public static void main(String[] args) {
+ try{ ServerSocket ss=new ServerSocket(4000);
+ Socket s=ss.accept();//establishes connection 
+DataInputStream dis=new DataInputStream(s.getInputStream());
+ String str=dis.readUTF();
+ System.out.println("message= "+str);
+ s.close(); 
+ss.close();
+
+ }
+catch(Exception e) {
+
+System.out.println(e);
+
+     }
+  }
+
+}
+.............................................................................................
+10)Write a program to chat btween client and server
+//Client
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Socket clientSocket = new Socket("localhost", 12345); // Connect to the server on localhost and port 12345
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+            String clientMessage, serverMessage;
+            while (true) {
+                System.out.print("Client: ");
+                clientMessage = reader.readLine(); // Read message from the client
+                out.println(clientMessage); // Send the client message to the server
+
+                if (clientMessage.equalsIgnoreCase("bye")) {
+                    break; // Exit the loop if the client sends "bye"
+                }
+
+                serverMessage = in.readLine(); // Read message from the server
+                System.out.println("Server: " + serverMessage);
+            }
+
+            reader.close();
+            out.close();
+            in.close();
+            clientSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+//Server
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(12345); // Server will listen on port 12345
+            System.out.println("Server started. Waiting for clients to connect...");
+
+            Socket clientSocket = serverSocket.accept(); // Wait for a client to connect
+            System.out.println("Client connected: " + clientSocket.getInetAddress().getHostName());
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+            String clientMessage, serverMessage;
+            while (true) {
+                clientMessage = in.readLine(); // Read message from the client
+                if (clientMessage.equalsIgnoreCase("bye")) {
+                    break; // Exit the loop if client sends "bye"
+                }
+                System.out.println("Client: " + clientMessage);
+
+                System.out.print("Server: ");
+                serverMessage = reader.readLine(); // Read message from the server
+                out.println(serverMessage); // Send the server message to the client
+            }
+
+            reader.close();
+            out.close();
+            in.close();
+            clientSocket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+....................................................................................
+12)WAP to Demonstarte The use of JSP
+//JSP File
+<html>
+<head>
+<title>userInfo</title>
+</head>
+<body>
+<h2>
+<% String username=request.getParameter("uname");
+   String password=request.getParameter("pass");
+   out.print("Name:"+username+" Password:"+password);
+ %>
+ </h2>
+</body>
+</html> 
+
+//HTML File
+<html>
+<head>
+<title>Enter username and Password</title>
+</head>
+<body><br><br><br><br>
+<center><h2><form action="userInfo.jsp">
+Enter User Name: <input type="text" name="uname"/> <br><br>
+Enter Password: <input type="password" name="pass" /><br><br>
+<input type="submit" value="SUBMIT DETAILS"/>
+</form></h2></center>
+</body>
+</html> 
+
+...........................................................GOOD LUCK.........................................................
+
+
+
+
+
+ 
