@@ -1,0 +1,7 @@
+db.students.insertOne({name:"vaibhavi",age:22})
+ db.students.insertMany([{name:"aarti",age:22},{name:"suvrni",age:23},{name:"anki",age:24}])
+ db.students.find({$and:[{age:{$gt:20}},{age:{$lt:24}}]})
+ db.students.updateOne({age:17},{$set:{age:55}})
+db.students.updateMany({age:18},{$set:{age:50}})
+db.students.deleteOne({age:18})
+db.students.find({$and:[{age:{$gt:20}},{age:{$lt:50}}]})
