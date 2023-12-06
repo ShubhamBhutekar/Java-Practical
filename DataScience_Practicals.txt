@@ -1,0 +1,609 @@
+Qu. 1.1: Create two 2x3 matrices and perform basic operations
+=============================================================
+# Create two 2x3 matrices
+=========================
+matrix1 <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE)
+matrix2 <- matrix(c(7, 8, 9, 10, 11, 12), nrow = 2, ncol = 3, byrow = TRUE)
+
+# Addition of matrices
+====================== 
+addition_result <- matrix1 + matrix2 
+print("Addition of Matrices:") 
+print(addition_result)
+
+# Subtraction of matrices
+========================= 
+subtraction_result <- matrix1 - matrix2 
+print("Subtraction of Matrices:") 
+print(subtraction_result)
+
+# Multiplication of matrices
+============================ 
+multiplication_result <- matrix1 * matrix2 
+print("Multiplication of Matrices:") 
+print(multiplication_result)
+
+# Division of matrices
+========================== 
+division_result <- matrix1 / matrix2 
+print("Division of Matrices:") 
+print(division_result)
+
+Qu. 1.2: Create an array of two 3x3 matrices from two given vectors
+===================================================================
+# Create two vectors
+====================
+
+vector1 <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+vector2 <- c(10, 11, 12, 13, 14, 15, 16, 17, 18)
+
+# Create an array of two 3x3 matrices
+======================================
+array_result <- array(c(vector1, vector2), dim = c(3, 3, 2)) 
+print("Array of Two 3x3 Matrices:")
+print(array_result)
+
+Qu. 1.3: Combine three arrays row-wise
+========================================
+# Create three arrays
+=======================
+array1 <- array(1:9, dim = c(3, 3)) 
+array2 <- array(10:18, dim = c(3, 3)) 
+array3 <- array(19:27, dim = c(3, 3))
+
+# Combine three arrays row-wise
+================================
+combined_array <- rbind(array1, array2, array3) 
+print("Combined Array Row-wise:") 
+print(combined_array)
+
+Qu. 2.1: Convert a given matrix to a 1-dimensional array
+========================================================
+
+# Create a matrix
+====================
+matrix_data <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE) 
+print("Original Matrix:")
+print(matrix_data)
+
+# Convert the matrix to a 1-dimensional array
+============================================== 
+array_data <- as.vector(matrix_data)
+print("Converted 1-Dimensional Array:") 
+print(array_data)
+
+Qu. 2.2: Combine three arrays row-wise
+===========================================
+
+# Create three arrays
+=======================
+array1 <- array(1:9, dim = c(3, 3)) 
+array2 <- array(10:18, dim = c(3, 3)) 
+array3 <- array(19:27, dim = c(3, 3))
+
+# Combine three arrays row-wise
+================================
+combined_array <- rbind(array1, array2, array3) 
+print("Combined Array Row-wise:") 
+print(combined_array)
+
+Qu. 2.3: Create a data frame from four given vectors
+=====================================================
+
+# Create four vectors
+======================
+name <- c("John", "Alice", "Bob", "Eve") 
+salary <- c(50000, 60000, 55000, 70000)
+age <- c(30, 25, 35, 28)
+dept <- c("HR", "IT", "Finance", "Marketing")
+
+# Create a data frame from the vectors
+=======================================
+employee_df <- data.frame(Name = name, Salary = salary, Age = age, Department = dept)
+print("Data Frame:") 
+print(employee_df) 
+
+Qu. 3.1: Get the structure of a given data frame
+================================================
+
+# Get the structure of the data frame
+===================================== 
+structure_info <- str(employee_df) 
+print("Structure of the Data Frame:") 
+print(structure_info)
+
+Qu. 3.2: Extract a specific column from a data frame using column name
+====================================================================== 
+# Extract the 'Salary' column from the data frame 
+==================================================
+salary_column <- employee_df$Salary 
+print("Extracted 'Salary' Column:") 
+print(salary_column)
+
+Qu. 3.3: Add new row(s) to an existing data frame
+=================================================
+# Create new data for the new row(s)
+==================================== 
+new_data <- data.frame(
+Name = c("Mark"), Salary = c(75000), Age = c(32),
+Department = c("Sales")
+)
+
+# Add the new row(s) to the existing data frame
+================================================ 
+employee_df <- rbind(employee_df, new_data) 
+print("Data Frame after Adding New Row(s):") 
+print(employee_df)
+
+Qu. 4.1: Drop column(s) by name from a given data frame
+========================================================
+# Drop the 'Age' column from the data frame 
+===========================================
+employee_df <- subset(employee_df, select = -c(Age)) 
+print("Data Frame after Dropping 'Age' Column:") 
+print(employee_df)
+
+Qu. 4.2: Sort a given data frame by multiple column(s)
+======================================================
+# Sort the data frame by 'Department' and then by 'Salary' in ascending order
+============================================================================= 
+sorted_df <- employee_df[order(employee_df$Department, employee_df$Salary), ] 
+print("Data Frame Sorted by 'Department' and 'Salary':")
+print(sorted_df)
+
+Qu. 4.3: Replace NA values with 3 in a given data frame
+========================================================
+# Create a data frame with NA values 
+====================================
+data_frame_with_na <- data.frame(
+Name = c("John", NA, "Bob"), 
+Salary = c(50000, 60000, NA), 
+Age = c(30, 25, 35),
+Department = c("HR", "IT", "Finance")
+)
+
+# Replace NA values with 3 in the data frame
+============================================= 
+data_frame_with_na[is.na(data_frame_with_na)] <- 3 
+print("Data Frame after Replacing NA values with 3:") 
+print(data_frame_with_na)
+
+Qu. 4: Implement Data visualization using Histogram on Iris Data set
+=====================================================================
+
+# Load the Iris dataset data(iris)
+# Install and load necessary packages for data visualization 
+# install.packages("ggplot2")
+library(ggplot2)
+
+# Create a histogram of Sepal Length
+==================================== 
+ggplot(iris, aes(x = Sepal.Length)) +
+geom_histogram(binwidth = 0.2, fill = "blue", color = "black", alpha = 0.7)
+ + ggtitle("Histogram of Sepal Length in Iris Dataset") +
+xlab("Sepal Length") + ylab("Frequency")
+
+Qu. 5: Implement Data visualization using scatter graph on Iris Data set
+=========================================================================
+# Load the Iris dataset data(iris)
+====================================
+# Install and load necessary packages for data visualization 
+# install.packages("ggplot2")
+library(ggplot2)
+
+# Create a scatter plot of Sepal Length vs Sepal Width
+=======================================================
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) + geom_point(size = 3) +
+ggtitle("Scatter Plot of Sepal Length vs Sepal Width in Iris Dataset") + xlab("Sepal Length") + 
+ylab("Sepal Width")
+
+Qu. 5.1: Create a vector of a specified type and length
+=========================================================
+
+# Create vectors of different types and lengths
+================================================ 
+numeric_vector <- as.numeric(1:6)
+complex_vector <- as.complex(seq(from = 1, to = 6, by = 1)) 
+logical_vector <- as.logical(c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE)) 
+character_vector <- as.character(letters[1:6])
+
+# Display the created vectors print("Numeric Vector:")
+======================================================= 
+print(numeric_vector) 
+print("Complex Vector:") 
+print(complex_vector) 
+print("Logical Vector:") 
+print(logical_vector) 
+print("Character Vector:") 
+print(character_vector) 
+
+Qu. 5.2: Add two vectors of integers type and length 3
+=========================================================
+
+# Create two vectors of integers
+================================= 
+vector1 <- c(2, 4, 6)
+vector2 <- c(1, 3, 5)
+
+# Add the two vectors element-wise
+================================== 
+result_vector <- vector1 + vector2
+
+# Display the result vector
+=============================
+print("Result Vector (Element-wise Addition):") 
+print(result_vector)
+
+Qu. 5.3: Append value to a given empty vector
+=============================================
+# Create an empty vector 
+=========================
+empty_vector <- numeric()
+
+# Append values to the empty vector 
+===================================
+empty_vector <- c(empty_vector, 10, 20, 30)
+
+# Display the updated vector
+============================
+print("Updated Vector after Appending Values:") 
+print(empty_vector)
+
+Qu. 6.1: Multiply two vectors of integers type and length 3
+============================================================
+
+# Create two vectors of integers
+================================= 
+vector1 <- c(2, 4, 6)
+vector2 <- c(1, 3, 5)
+
+# Multiply the two vectors element-wise
+======================================== 
+result_vector <- vector1 * vector2
+
+# Display the result vector
+===========================
+print("Result Vector (Element-wise Multiplication):") 
+print(result_vector)
+
+Qu. 6.2: Find Sum, Mean, and Product of a Vector
+================================================
+
+# Create a vector of numeric values
+==================================== 
+numeric_vector <- c(2, 4, 6, 8, 10)
+
+# Calculate sum, mean, and product of the vector
+================================================ 
+sum_result <- sum(numeric_vector)
+mean_result <- mean(numeric_vector) 
+product_result <- prod(numeric_vector)
+
+# Display the results
+===================== 
+print("Sum of the Vector:") 
+print(sum_result) 
+print("Mean of the Vector:") 
+print(mean_result)
+print("Product of the Vector:") 
+print(product_result)
+
+Qu. 6.3: Find Sum, Mean, and Product of a Vector, Ignore NA or NaN
+===================================================================
+
+# Create a vector with NA and NaN values
+========================================= 
+numeric_vector <- c(2, 4, NA, 8, NaN)
+
+# Calculate sum, mean, and product of the vector, ignoring NA and NaN
+===================================================================== 
+sum_result <- sum(numeric_vector, na.rm = TRUE)
+mean_result <- mean(numeric_vector, na.rm = TRUE) 
+product_result <- prod(numeric_vector, na.rm = TRUE)
+
+# Display the results
+======================
+print("Sum of the Vector (ignoring NA and NaN):") 
+print(sum_result)
+print("Mean of the Vector (ignoring NA and NaN):") 
+print(mean_result)
+print("Product of the Vector (ignoring NA and NaN):") 
+print(product_result)
+
+Qu. 6.4: Find the minimum and the maximum of a Vector
+=====================================================
+
+# Create a vector of numeric values 
+====================================
+numeric_vector <- c(2, 4, 6, 8, 10)
+
+# Find the minimum and maximum of the vector
+============================================= 
+min_value <- min(numeric_vector)
+max_value <- max(numeric_vector)
+
+# Display the results
+======================
+print("Minimum Value of the Vector:") 
+print(min_value)
+print("Maximum Value of the Vector:") 
+print(max_value)
+
+Qu. 7: Create an employee CSV file with details like name, salary, age, dept, 
+input the file, read, and perform the following operations:
+==============================================================
+
+a) Get the maximum salary 
+b) Get the details of the person with the max salary 
+c) Get all the people working in the IT department 
+d) Get the persons in the IT department whose salary is greater than 600
+
+# Create a sample CSV file
+=========================== 
+employee_csv <- "Name,Salary,Age,Dept John,50000,30,HR
+Alice,60000,25,IT
+Bob,55000,35,Finance Eve,70000,28,IT"
+
+# Write the CSV data to a file
+=============================== 
+writeLines(employee_csv, "employee.csv")
+
+# Read the CSV file into a data frame
+====================================== 
+employee_df <- read.csv("employee.csv")
+
+# a) Get maximum salary
+=======================
+max_salary <- max(employee_df$Salary) 
+print("Maximum Salary:") 
+print(max_salary)
+
+# b) Get details of the person with max salary
+==============================================
+person_with_max_salary <- employee_df[employee_df$Salary == max_salary,]
+print("Details of Person with Maximum Salary:") 
+print(person_with_max_salary)
+
+# c) Get all people working in the IT department
+================================================= 
+it_department_employees <- subset(employee_df, Dept == "IT") 
+print("Employees in the IT Department:") 
+print(it_department_employees)
+
+# d) Get persons in the IT department whose salary is greater than 600
+======================================================================= 
+high_salary_it_employees <- subset(it_department_employees, Salary > 600) 
+print("IT Department Employees with Salary > 600:") 
+print(high_salary_it_employees)
+
+Qu. 8.1: Sort a vector in ascending and descending order
+========================================================
+
+# Create a numeric vector
+=========================
+numeric_vector <- c(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5)
+
+# Sort the vector in ascending order
+==================================== 
+sorted_ascending <- sort(numeric_vector) 
+print("Sorted Vector in Ascending Order:") 
+print(sorted_ascending)
+
+# Sort the vector in descending order
+=====================================
+sorted_descending <- sort(numeric_vector, decreasing = TRUE) 
+print("Sorted Vector in Descending Order:") 
+print(sorted_descending)
+
+Qu. 8.2: Count the specific value in a given vector
+===================================================
+
+# Count the occurrences of the value 5 in the numeric vector 
+=============================================================
+count_of_5 <- sum(numeric_vector == 5)
+print("Count of Value 5 in the Vector:") 
+print(count_of_5)
+
+Qu. 8.3: Access the last value in a given vector
+================================================
+ 
+# Access the last value in the numeric vector 
+last_value <- tail(numeric_vector, n = 1) 
+print("Last Value in the Vector:")
+print(last_value)
+
+Qu. 8.4: Find Sum, Mean, and Product of a Vector, ignore elements like NA or NaN
+=================================================================================
+
+# Create a vector with NA and NaN values
+======================================== 
+numeric_vector <- c(2, 4, NA, 8, NaN)
+
+# Calculate sum, mean, and product of the vector, ignoring NA and NaN
+===================================================================== 
+sum_result <- sum(numeric_vector, na.rm = TRUE)
+mean_result <- mean(numeric_vector, na.rm = TRUE) 
+product_result <- prod(numeric_vector, na.rm = TRUE)
+
+# Display the results
+=====================
+print("Sum of the Vector (ignoring NA and NaN):") 
+print(sum_result)
+print("Mean of the Vector (ignoring NA and NaN):") 
+print(mean_result)
+print("Product of the Vector (ignoring NA and NaN):") 
+print(product_result)
+
+Qu. 9.1: Create a list containing a vector, a matrix, and a list and remove the second element
+==============================================================================================
+
+# Create a list with a vector, a matrix, and a list
+==================================================== 
+my_list <- list(
+vector = c(1, 2, 3),
+matrix = matrix(4:9, ncol = 2), 
+inner_list = list("a", "b", "c")
+)
+
+# Remove the second element from the list
+========================================== 
+my_list <- my_list[-2]
+print("List after removing the second element:") 
+print(my_list) 
+
+Qu. 9.2: Create a list containing a vector, a matrix, and a list and update the last element
+=============================================================================================
+
+# Create a list with a vector, a matrix, and a list
+==================================================== 
+my_list <- list(
+vector = c(1, 2, 3),
+matrix = matrix(4:9, ncol = 2), 
+inner_list = list("a", "b", "c")
+)
+
+# Update the last element of the inner list
+=========================================== 
+my_list$inner_list[[3]] <- "updated_c" 
+print("List after updating the last element:") 
+print(my_list)
+
+Qu. 9.3: Merge two given lists into one list
+============================================
+
+# Create two lists
+===================
+list1 <- list(a = 1, b = 2, c = 3) 
+list2 <- list(d = 4, e = 5, f = 6)
+
+# Merge the two lists into one list
+==================================== 
+merged_list <- c(list1, list2) 
+print("Merged List:") print(merged_list)
+ 
+Qu. 9: Write any three programs that show looping structures
+=============================================================
+
+Program 1: For Loop
+===================
+
+# Program using a for loop to print numbers 1 to 5
+=================================================== 
+for (i in 1:5) {
+print(i)
+}
+
+Program 2: While Loop
+=====================
+
+# Program using a while loop to print numbers 1 to 5 
+====================================================
+i <- 1
+while (i <= 5) { print(i)
+i <- i + 1
+}
+
+Program 3: Repeat Loop
+======================
+
+# Program using a repeat loop to print numbers 1 to 5
+===================================================== 
+i <- 1
+repeat { print(i) i <- i + 1
+if (i > 5) { break
+}
+}
+
+
+Qu. 10.1: Program demonstrating the use of switch case statement
+=================================================================
+# Program using a switch case statement to perform arithmetic operations
+======================================================================== 
+operation <- "add"
+value1 <- 5
+value2 <- 3
+
+result <- switch( operation,
+add = value1 + value2, 
+subtract = value1 - value2, 
+multiply = value1 * value2, 
+divide = value1 / value2, 
+"Invalid Operation"
+)
+print("Result of the Arithmetic Operation:") 
+print(result)
+
+10.2: Program demonstrating the use of go to statement
+=======================================================
+
+# Program to demonstrate the use of go to statement in R
+======================================================== 
+count <- 1
+
+# Define a labeled block
+========================= 
+start_loop: {
+if (count <= 5) { 
+print(count) 
+count <- count + 1
+
+# Simulate go to statement by jumping to the labeled block
+=========================================================== 
+
+next_iteration <- TRUE
+if (next_iteration) { 
+next_iteration <- FALSE next_iteration
+} 
+else { 
+break
+  }
+ }
+}
+print("End of the loop.")
+ 
+Qu. 11: Write any three programs that show looping structures
+=============================================================
+
+Program 1: For Loop with Break Statement
+========================================
+
+# Program using a for loop with a break statement to print numbers until a condition is met
+===========================================================================================
+
+for (i in 1:10) { 
+print(i)
+if (i == 5) { 
+break
+ }
+}
+
+Program 2: While Loop with Continue Statement
+==============================================
+
+# Program using a while loop with a continue statement to skip even numbers
+============================================================================ 
+i <- 1
+while (i <= 10) { 
+if (i %% 2 == 0) 
+{
+i <- i + 1 next
+}
+print(i) i <- i + 1
+}
+
+Program 3: Repeat Loop with Conditional Exit
+=============================================
+
+# Program using a repeat loop with a conditional exit to print numbers until a condition is met
+================================================================================================
+
+i <- 1
+repeat { 
+print(i) 
+i <- i + 1
+if (i > 5) { 
+break
+}
+  
+
+
