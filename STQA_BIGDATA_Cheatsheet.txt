@@ -1,0 +1,648 @@
+STQA Practicals
+==========================
+
+Practical1. Prepare a Test Plan for METBKC Official Website.
+===============================================================
+1)Introduction: The purpose of this Test Plan is to define the testing 
+strategy, scope, resources, and schedule for the MET BKC Official Website. 
+The testing effort aims to ensure the functionality, usability, 
+performance, and security of the website meet the specified requirements.
+========================================================================
+2)Scope: Items[Modules] to be Tested
+       Student Registration
+       Student Login
+       Homepage
+       Fees Payment
+     
+       Items[Modules] not to be tested
+       Feedback
+       Contact Us
+       About Us
+========================================================================
+3)Approch: Unit testing will be done by the developers and will 
+be approved by the development team leader
+proof Unit Testing: 1. Test Cases
+                    2. Sample Output data Printout
+                    3. Defects Information
+========================================================================
+4)Acceptance: It is a formal testing done by actual end user to verify wheather
+the requirements are fullfilled or not.
+========================================================================
+
+5)Item Pass/Fail Criteria: The test process will be completed or passed when the sope is fullfilled.
+=================================================================================================
+
+6)Suspension and resumption Criteria:
+======================================= 
+when defect is introduced that cannot allow any further testing
+Resumption: The holiday period ends.
+=========================================
+7)Roles and Responsibiities:
+=======================================
+
+8)Test Deliverables:
+
+  Test Plan
+  Test cases as per module
+  Defect reports
+  Test Summary Reports
+===============================================
+9)Test Environment [Hardware and Software]
+ Processor    1.6 GHZ or faster processor
+ Ram          4GB
+ Disk Space   10 gb of available Disk
+ Graphic      Direct x-9 capable video card
+ Display      1024 X 768 or Higher Resolution
+
+OS            Windows 10
+Front-end     HTML CSS JavaScript
+Back-end      PHP
+Framework     Bootstrap
+Code Editor   VS-Code
+Database      MySQL
+Web Browser   Google Chrome
+==================================================
+10)Staff and training Need:
+================================================
+11)Risk and Contigencies:
+============================
+ i. change to tester staff
+ ii. Lack of Testing resourses
+ iii.Changes to original requirements
+======================================
+12)Approval:
+====================================
+Test Automation Engineer
+====================================================
+13)Conclusion: Following Document is the test plan for the "MET BKC Official Website"
+every needful aspects for the successful implementation of testing must be completed as per the test plan.
+
+=========================================================
+Practical4.
+=======================================
+Test case for Login form:
+==========================
+Project Name:
+==========================
+Test Case Template
+==============================
+
+Test Case ID:                   Test Designed by:
+=================================================
+Test Priority(Low/Medium/High): Test Designed date:
+===================================================
+Module Name:                    Test Executed by:
+=================================================
+Test Title: Verify Login with valid user name and
+Password.                       Test Execution date:
+====================================================
+Description: To test the log in page of “Project
+name”
+===================================================
+Pre-conditions: User has valid username and password
+====================================================
+
+Step      Test Steps     Test Data            Expected Result               Actual Result        Status(Pass/Fail)
+
+1.Enter Valid Username
+and Password            Username=Password=      User should able to login   Login successful and   Pass
+                                                                            go to dash board Pass
+
+2, 3, 4 step as it is.
+
+
+#Test Case For Sign Up Page
+
+# Test Case For Home Page
+
+Test Case ID	 Test Case Description	   Test Steps	       Expected Result	                Actual Result	             Status
+	   Verify Homepage Load	     1. Open the browser.	The browser opens successfully.	same as Expected Result	      Pass
+       Navigate to the MET BKC website.	The homepage loads 
+                                         without errors.		
+
+Check Homepage Layout	1. Verify the presence of the navigation menu.	The navigation menu is displayed correctly.		Pass
+2. Check for the presence of key sections.	Sections such as News, Events, and Admissions are visible.
+		
+	Test Homepage Links	1. Click on each navigation menu item.	Each link navigates to the respective page
+                                                                                         without errors	                         Pass
+2. Click on links within page content.	Links within content 
+                                      direct to the correct pages.
+		
+   Verify Search Functionality	1. Enter a valid search query in the search bar.	Search results are displayed 
+                                                                                                  relevant to the query.           pass
+2. Enter an invalid search query.	Verify appropriate messaging for no results.		
+====================================================================================================================================
+Practical 7. Perform automation testing for launching and closing the website
+after hold of few seconds using Selenium and Intellij.
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Sanju\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.cricbuzz.com/");
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        driver.quit();
+    }
+}
+=============================================================================================================================
+Practical 8. Perform automation testing for launching website and searching
+for a module & opening it, included in the website using Selenium
+and Intellij.
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Main {
+    public static void main(String[] args) {
+
+        System.setProperty("webdriver.chrome.driver","C:\\Users\\Sanju\\Downloads\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.navigate().to("https://www.javatpoint.com/");
+        driver.manage().window().maximize();
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("scrollBy(0,5000)");
+        driver.findElement(By.linkText("Java")).click();
+   }
+}
+==================================================================================================================
+Practical 10. Prepare a bug tracking report for an online banking app
+==========================================================================================
+Product Name: Library Management System [Write your own project name]
+Module Name: Log in Page [Write your own project module details]
+Test executed by: Tester XYZ
+
+1 Defect ID                 DefectID 01/Login
+2 Title                     Bug in Log in page
+
+3 Defect Summary           Input of invalid credentials 
+                           are stated as true
+
+4 Defect Description      Input: Enter Invalid ID and Password
+                          Output: Login Successfully
+                          Expected :Login Unsuccessfully
+                          Defect is occurs Because of user ID or 
+                          Password are wrong
+
+5 Test Case ID            Defect/Login
+
+6 Product Version         TD_library_system_Defect/111
+
+7 Tester                  Admin
+
+8 Build Version           Stud_ad_version0.1
+
+9 Priority                Very High
+
+10 Severity               High
+
+11 Status                 New
+
+12 Reproducible           Yes,
+                         -By Valid Id and Password
+                         -By checking validation in Database
+
+13 Reporting              Developer
+
+14 Remark
+
+Conclusion:
+======================================================================
+Practical 14. Perform white box testing – Cyclomatic complexity, data
+flow testing, control flow testing for the given problem statement:
+Write algorithm for Fibonacci series
+
+public class Fibonacci {
+    public static int calculateFibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        } else {
+            return calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
+        }
+    }
+
+    public static void main(String[] args) {
+        int n = 5; // Example: Calculate Fibonacci series up to the 5th term
+        for (int i = 0; i < n; i++) {
+            System.out.print(calculateFibonacci(i) + " ");
+        }
+    }
+}
+
+White Box Testing:
+Cyclomatic Complexity:
+
+Cyclomatic complexity is calculated using the formula E - N + 2P, where:
+E is the number of edges in the flow graph,
+N is the number of nodes in the flow graph, and
+P is the number of connected components (usually 1 for a single program).
+In this case:
+
+E = 12 (edges)
+N = 10 (nodes)
+P = 1
+Cyclomatic complexity = 12 - 10 + 2(1) = 4
+
+The cyclomatic complexity indicates the number of independent paths through the code.
+
+Data Flow Testing:
+
+Identify variables and their scopes.
+Test paths to ensure proper initialization, usage, and termination of variables.
+In this case, there are no complex data flow scenarios since there are no loops or complex conditional statements.
+
+Control Flow Testing:
+
+Identify decision points, loops, and conditional statements.
+Test paths to cover all branches and conditions.
+In the given algorithm:
+
+Decision Point: The if (n <= 1) condition.
+Loops: The recursive calls in the calculateFibonacci method.
+Test cases:
+
+Test with n = 0.
+Test with n = 1.
+Test with n > 1.
+Test with n < 0 (not valid for Fibonacci, but still a boundary case).
+Test Cases:
+Test with n = 0:
+
+Expected Output: 0
+Test with n = 1:
+
+Expected Output: 1
+Test with n = 5 (provided in the main method):
+
+Expected Output: 0 1 1 2 3
+Test with n = -1:
+
+Expected Output: Not a valid input for Fibonacci (can handle this as an edge case)
+====================================================================================
+Practical16. Implement and explain Positive and Negative Testing
+================================================================
+Positive Testing:
+
+Positive testing, also known as "happy path testing," involves validating the system or application with valid and expected inputs.
+ The goal is to ensure that the system behaves as intended under normal or favorable conditions. 
+Positive testing helps confirm that the software produces the expected results when users follow the correct and expected workflow.
+
+Example - Positive Testing for a Login Page:
+
+Suppose you have a login page for an application. Positive testing scenarios would include:
+
+Valid Username and Password:
+
+Input: Valid username and password.
+Expected Result: Successful login, redirect to the user's dashboard.
+Remember Me Option:
+
+Input: Valid username and password with the "Remember Me" option selected.
+Expected Result: Successful login with credentials remembered for future logins.
+Password Recovery:
+
+Input: Valid email for password recovery.
+Expected Result: Successful submission of the password recovery request, and the user receives a password reset email.
+Account Creation:
+
+Input: Valid information in the registration form.
+Expected Result: Successful creation of a new account with the provided details.
+Positive testing ensures that the application handles valid inputs correctly, processes data accurately, and provides the expected outcomes.
+
+Negative Testing:
+
+Negative testing, on the other hand, focuses on testing the system's ability to handle invalid or unexpected inputs and conditions. The objective is to identify weaknesses and potential points of failure in the system. Negative testing is essential for improving robustness and ensuring the application can gracefully handle unexpected scenarios.
+
+Example - Negative Testing for a Login Page:
+
+Continuing with the login page example, negative testing scenarios would include:
+
+Invalid Username or Password:
+
+Input: Incorrect username or password.
+Expected Result: Unsuccessful login, with an appropriate error message displayed.
+Blank Username or Password:
+
+Input: Blank username or password fields.
+Expected Result: Unsuccessful login with a validation message indicating required fields.
+SQL Injection Attempt:
+
+Input: Username or password field with SQL injection attempt.
+Expected Result: Application should prevent SQL injection and handle the input safely.
+=======================================================================================================
+
+BIG DATA Practicals:
+=============================================
+
+Practical4. Implemnt Basic functions and commands in R programming.
+Aruthmetic Operations
+# Example
+x <- 10
+y <- 5
+
+addition_result <- x + y
+subtraction_result <- x - y
+multiplication_result <- x * y
+division_result <- x / y
+
+print(addition_result)
+print(subtraction_result)
+print(multiplication_result)
+print(division_result)
+
+Assignment Operators
+# Example
+my_variable <- 42
+another_variable = 15
+
+print(my_variable)
+print(another_variable)
+
+
+Basic Commands:
+1. Help:
+Get help for a function or topic.
+
+# Example
+help(print)
+
+2. Data Types:
+Check the data type of a variable.
+# Example
+my_variable <- "Hello, R!"
+typeof(my_variable)
+
+3. Vectors:
+Create and manipulate vectors.
+# Example
+numeric_vector <- c(1, 2, 3, 4, 5)
+character_vector <- c("apple", "orange", "banana")
+
+print(numeric_vector)
+print(character_vector)
+
+4. Data Frames:
+Create and work with data frames.
+# Example
+data <- data.frame(
+    Name = c("John", "Alice", "Bob"),
+    Age = c(25, 30, 22),
+    Score = c(95, 88, 75)
+)
+
+print(data)
+
+Practical6. Write a program using R programming for Fibonacci series
+
+# Function to generate Fibonacci series up to n terms
+fibonacci <- function(n) {
+  fib_series <- numeric(n)
+  
+  if (n >= 1) {
+    fib_series[1] <- 0
+  }
+  if (n >= 2) {
+    fib_series[2] <- 1
+  }
+  
+  for (i in 3:n) {
+    fib_series[i] <- fib_series[i - 1] + fib_series[i - 2]
+  }
+  
+  return(fib_series)
+}
+
+# Example: Generate and print Fibonacci series up to 10 terms
+n_terms <- 10
+result <- fibonacci(n_terms)
+
+cat("Fibonacci series up to", n_terms, "terms:", result, "\n")
+
+Practical7. Write a program using R programming to find Armstrong number.
+
+is_armstrong <- function(num) {
+  original_num <- num
+  num_digits <- nchar(num)
+  result <- 0
+  
+  while (num > 0) {
+    digit <- num %% 10
+    result <- result + digit^num_digits
+    num <- num %/% 10
+  }
+  
+  return(result == original_num)
+}
+
+# Example: Check if 153 is an Armstrong number
+number_to_check <- 153
+if (is_armstrong(number_to_check)) {
+  cat(number_to_check, "is an Armstrong number.\n")
+} else {
+  cat(number_to_check, "is not an Armstrong number.\n")
+}
+
+Practical 8. 
+
+is_prime <- function(num) {
+  if (num <= 1) {
+    return(FALSE)
+  }
+  
+  for (i in 2:sqrt(num)) {
+    if (num %% i == 0) {
+      return(FALSE)
+    }
+  }
+  
+  return(TRUE)
+}
+
+# Example: Check if 13 is a prime number
+number_to_check <- 13
+if (is_prime(number_to_check)) {
+  cat(number_to_check, "is a prime number.\n")
+} else {
+  cat(number_to_check, "is not a prime number.\n")
+}
+
+Practical9. Write a program in R programming to implement sum of series of number
+
+# Function to calculate the sum of a series of numbers
+sum_of_series <- function(n) {
+  series_sum <- sum(1:n)
+  return(series_sum)
+}
+
+# Example: Calculate the sum of numbers from 1 to 10
+n_terms <- 10
+result <- sum_of_series(n_terms)
+
+cat("Sum of the series from 1 to", n_terms, "terms:", result, "\n")
+
+Practical10. Write a program in R programming for the implementation of vector
+
+# Create a numeric vector
+numeric_vector <- c(1, 2, 3, 4, 5)
+
+# Create a character vector
+character_vector <- c("apple", "orange", "banana")
+
+# Print the vectors
+cat("Numeric Vector:", numeric_vector, "\n")
+cat("Character Vector:", character_vector, "\n")
+
+# Access elements in a vector
+cat("Third element of Numeric Vector:", numeric_vector[3], "\n")
+cat("Second element of Character Vector:", character_vector[2], "\n")
+
+# Vector Operations
+sum_of_numeric <- sum(numeric_vector)
+length_of_character <- length(character_vector)
+
+cat("Sum of Numeric Vector:", sum_of_numeric, "\n")
+cat("Length of Character Vector:", length_of_character, "\n")
+
+# Combine vectors
+combined_vector <- c(numeric_vector, 6, character_vector)
+cat("Combined Vector:", combined_vector, "\n")
+
+Practical11. Write a program in R programming for the implementation of Data frames
+
+# Create a data frame
+my_data <- data.frame(
+    Name = c("John", "Alice", "Bob"),
+    Age = c(25, 30, 22),
+    Score = c(95, 88, 75)
+)
+
+# Print the data frame
+print("Original Data Frame:")
+print(my_data)
+
+# Access elements in a data frame
+cat("Name of the second person:", my_data$Name[2], "\n")
+cat("Score of the third person:", my_data$Score[3], "\n")
+
+# Add a new column to the data frame
+my_data$Grade <- c("A", "B", "C")
+cat("Modified Data Frame with a new Grade column:")
+print(my_data)
+
+
+Practical12. Write a program in R programming for the implementation of Matrices
+
+# Create a matrix
+my_matrix <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3, byrow = TRUE)
+
+# Print the matrix
+cat("Original Matrix:\n")
+print(my_matrix)
+
+# Access elements in a matrix
+cat("Element at the second row and third column:", my_matrix[2, 3], "\n")
+
+# Matrix Operations
+row_sums <- rowSums(my_matrix)
+col_means <- colMeans(my_matrix)
+
+cat("Row Sums:", row_sums, "\n")
+cat("Column Means:", col_means, "\n")
+
+Practical13. Write a program in R programming for the implementation of list
+
+# Create a list
+my_list <- list(
+  name = "John",
+  age = 25,
+  grades = c(90, 85, 92),
+  courses = c("Math", "English", "Science")
+)
+
+# Print the list
+cat("Original List:\n")
+print(my_list)
+
+# Access elements in a list
+cat("Name:", my_list$name, "\n")
+cat("Second grade:", my_list$grades[2], "\n")
+
+# Add a new element to the list
+my_list$city <- "New York"
+cat("Modified List with a new city element:\n")
+print(my_list)
+
+Practical15. Find even or odd number using functions in R Programming
+
+check_even_odd <- function(num) {
+  if (num %% 2 == 0) {
+    return("Even")
+  } else {
+    return("Odd")
+  }
+}
+
+# Example: Check if 7 is even or odd
+number_to_check <- 7
+result <- check_even_odd(number_to_check)
+
+cat(number_to_check, "is an", result, "number.\n")
+
+Practical16. Perform String operations using R programming.
+
+# Create a string
+my_string <- "Hello, R Programming!"
+
+# Print the original string
+cat("Original String:", my_string, "\n")
+
+# String Length
+string_length <- nchar(my_string)
+cat("String Length:", string_length, "\n")
+
+# Substring
+substring_example <- substr(my_string, start = 1, stop = 5)
+cat("Substring (first 5 characters):", substring_example, "\n")
+
+# Concatenation
+concatenated_string <- paste("Greetings", "from", "R", sep = " ")
+cat("Concatenated String:", concatenated_string, "\n")
+
+# String Replacement
+replaced_string <- gsub("R", "Data Science", my_string)
+cat("String with Replacement:", replaced_string, "\n")
+
+# Uppercase and Lowercase
+uppercase_string <- toupper(my_string)
+lowercase_string <- tolower(my_string)
+cat("Uppercase String:", uppercase_string, "\n")
+cat("Lowercase String:", lowercase_string, "\n")
+
+# Splitting into Words
+words <- strsplit(my_string, " ")[[1]]
+cat("Words in the String:", words, "\n")
+=====================================================================
+
+
+
+ 
+
+
+
+
+
+
+
+
+
